@@ -1,0 +1,28 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="HeartBlock.cs">
+    <Files>
+      <File FileName="BerryBlock.cs" Line="28" Column="19" />
+      <File FileName="HeartBlock.cs" Line="112" Column="42" />
+      <File FileName="SeedSides.cs" Line="38" Column="63" />
+      <File FileName="../../../../../../../../../Projects/BGswitch/BGswitch.cs" Line="6" Column="14" />
+      <File FileName="../../../../../../../../../Projects/BGswitch/Switch.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SeedSides" expanded="True">
+            <Node name="SeedSides" expanded="True">
+              <Node name="HeartBlock.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

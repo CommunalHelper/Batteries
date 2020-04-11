@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sprites>
+
+  <battery path="batteries/battery/" start="full">
+    <Justify x=".5" y="1" />
+    <Loop id="full" path="full" delay="0.8"/>
+    <Loop id="fresh" path="fresh" delay="0.8"/>
+    <Loop id="half" path="half" delay="0.8"/>
+    <Loop id="low" path="low" delay="0.8"/>
+    <Loop id="empty" path="empty" delay="0.8"/>
+    <Loop id="infinite" path="infinite" delay="0.8"/>
+  </battery>
+
+  <battery_switch path="batteries/battery_switch/" start="empty">
+    <Justify x=".5" y="1" />
+    <Loop id="empty" path="empty" delay="0.8"/>
+    <Anim id="insert" path="insert" delay="0.01" goto="start"/>
+    <Anim id="start" path="start" delay="0.03" goto="buzz"/>
+    <Loop id="buzz" path="buzz" delay="0.1"/>
+  </battery_switch>
+
+  <battery_gate path="batteries/battery_gate/" start="idle">
+    <Justify x="0.5" y="0"/>
+    <Loop id="idle" path="door" delay="0.1" frames="1"/>
+    <Anim id="open" path="door" delay="0.1" frames="7-15" goto="opened"/>
+    <Anim id="hit" path="door" delay="0.08" frames="1-5" goto="idle"/>
+    <Loop id="opened" path="door" delay="0.1" frames="15"/>
+  </battery_gate>
+
+  <recharge_platform path="batteries/recharge_platform/" start="base">
+    <Justify x=".5" y="1" />
+    <Loop id="base" path="base" delay="0.3"/>
+  </recharge_platform>
+
+  <dummy_refill path="batteries/power_refill/" start="idle">
+    <Justify x=".5" y="1" />
+    <Loop id="idle" path="idle" delay="0.8"/>
+    <Loop id="flash" path="flash" delay="0.8"/>
+    <Loop id="outline" path="outline" delay="0.8"/>
+  </dummy_refill>
+
+</Sprites>
