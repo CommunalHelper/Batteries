@@ -130,6 +130,42 @@ namespace Celeste.Mod.Batteries
             Level = SceneAs<Level>();
             if (Level.Session.GetFlag(FlagName))
                 RemoveSelf();
+            string newSprite;
+            ParticleType newParticle = P_Low;
+            if (DischargeRate == 0)
+            {
+                newSprite = "infinite";
+                newParticle = P_Infinite;
+            }
+            else if (fresh && Charge == MaxCharge)
+            {
+                newSprite = "fresh";
+                newParticle = P_Full;
+            }
+            else if (Charge > MaxCharge / 2)
+            {
+                newSprite = "full";
+                newParticle = P_Full;
+            }
+            else if (Charge > MaxCharge / 5)
+            {
+                newSprite = "half";
+                newParticle = P_Half;
+            }
+            else if (Charge > 0)
+            {
+                newSprite = "low";
+                newParticle = P_Low;
+            }
+            else
+            {
+                newSprite = "empty";
+            }
+            if (sprite.CurrentAnimationID != newSprite)
+            {
+                sprite.Play(newSprite);
+                particle = newParticle;
+            }
         }
 
         public void Reset()

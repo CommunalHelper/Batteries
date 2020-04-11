@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Sprites>
 
-  <battery path="batteries/battery/" start="full">
+  <battery path="batteries/battery/" start="fresh">
     <Justify x=".5" y="1" />
     <Loop id="full" path="full" delay="0.8"/>
     <Loop id="fresh" path="fresh" delay="0.8"/>
