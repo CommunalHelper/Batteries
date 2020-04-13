@@ -1,7 +1,7 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="BatterySwitch.cs">
     <Files>
-      <File FileName="BatterySwitch.cs" Line="146" Column="14" />
+      <File FileName="BatterySwitch.cs" Line="168" Column="57" />
       <File FileName="Battery.cs" Line="28" Column="24" />
     </Files>
     <Pads>
@@ -9,7 +9,7 @@
         <State name="__root__">
           <Node name="Batteries" expanded="True">
             <Node name="Batteries" expanded="True">
-              <Node name="Battery.cs" selected="True" />
+              <Node name="BatterySwitch.cs" selected="True" />
             </Node>
           </Node>
         </State>

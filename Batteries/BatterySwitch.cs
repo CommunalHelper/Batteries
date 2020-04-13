@@ -162,10 +162,10 @@ namespace Celeste.Mod.Batteries
                 }
                 else
                 {
-                    Holdable hold = level.Tracker.GetEntity<Player>().Holding;
-                    if (hold != null && hold.Entity is Battery)
+                    Player player = level.Tracker.GetEntity<Player>();
+                    if (player != null && player.Holding != null && player.Holding.Entity is Battery)
                     {
-                        Battery battery = hold.Entity as Battery;
+                        Battery battery = player.Holding.Entity as Battery;
                         if (battery.onlyFits == id.ID)
                         {
                             level.ParticlesFG.Emit(P_Signal, 8, Collider.AbsolutePosition + Collider.Center + (pressDirection * -28), pressDirection.Perpendicular() * 6f, pressDirection.Angle());
