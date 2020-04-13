@@ -8,6 +8,8 @@ placements.entities.batteries/battery_switch.tooltips.ceiling=This is enabled if
 # Battery
 
 placements.entities.batteries/battery.tooltips.oneUse=If this is enabled, the battery will not respawn after it is used to activate a switch
+placements.entities.batteries/battery.tooltips.onlyFits=The entity id of the switch that this battery fits into. If unset or below 0, this battery will be able to fit into any switch.
+placements.entities.batteries/battery.tooltips.ignoreBarriers=If this is enabled, this battery will be able to pass through seeker barriers without being destroyed
 placements.entities.batteries/battery.tooltips.maxCharge=The maximum charge that the battery can hold
 placements.entities.batteries/battery.tooltips.initalCharge=The charge that the battery starts with
 placements.entities.batteries/battery.tooltips.dischargeRate=The rate at which the battery loses charge (in units/second)

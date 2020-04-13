@@ -23,7 +23,7 @@ namespace Celeste.Mod.Batteries
 
         public static ParticleType P_PressB = DashSwitch.P_PressB;
 
-        public static ParticleType P_Glow = Refill.P_Glow;
+        public static ParticleType P_Signal = DashSwitch.P_PressAMirror;
 
         private Sides side;
 
@@ -43,11 +43,18 @@ namespace Celeste.Mod.Batteries
 
         private bool alwaysFlag;
 
+        private static bool particlesSetup = false;
+
         private string FlagName => GetFlagName(id);
 
         public BatterySwitch(Vector2 position, Sides side, bool persistent, bool allGates, bool alwaysFlag, EntityID id)
             : base(position, 0f, 0f, safe: true)
         {
+            if (!particlesSetup)
+            {
+                SetupParticles();
+                particlesSetup = true;
+            }
             this.side = side;
             this.persistent = persistent;
             this.allGates = allGates;
@@ -94,6 +101,16 @@ namespace Celeste.Mod.Batteries
         this(data.Position + offset, direction(data), data.Bool("persistent"), data.Bool("allGates"), data.Bool("alwaysFlag"), id)
         { }
 
+        private static void SetupParticles()
+        {
+            P_Signal.Color = Color.Aqua;
+            P_Signal.ColorMode = ParticleType.ColorModes.Choose;
+            P_Signal.LifeMax = 0.6f;
+            P_Signal.LifeMin = 0.3f;
+            P_Signal.SpeedMultiplier = 0.1f;
+            P_Signal.DirectionRange = (float)(Math.PI / 5);
+        }
+
         private static Sides direction(EntityData data)
         {
             if (data.Bool("horizontal"))
@@ -137,10 +154,24 @@ namespace Celeste.Mod.Batteries
         public override void Update()
         {
             base.Update();
-            if (pressed && base.Scene.OnInterval(0.3f))
-            {
-                Level level = SceneAs<Level>();
-                level.ParticlesFG.Emit(P_PressA, 1, Collider.AbsolutePosition + Collider.Center, pressDirection.Perpendicular() * 6f, (pressDirection * -1).Angle());
+            Level level = SceneAs<Level>();
+            if (base.Scene.OnInterval(0.3f)) {
+                if (pressed)
+                {
+                    level.ParticlesFG.Emit(P_PressA, 1, Collider.AbsolutePosition + Collider.Center, pressDirection.Perpendicular() * 6f, (pressDirection * -1).Angle());
+                }
+                else
+                {
+                    Holdable hold = level.Tracker.GetEntity<Player>().Holding;
+                    if (hold != null && hold.Entity is Battery)
+                    {
+                        Battery battery = hold.Entity as Battery;
+                        if (battery.onlyFits == id.ID)
+                        {
+                            level.ParticlesFG.Emit(P_Signal, 8, Collider.AbsolutePosition + Collider.Center + (pressDirection * -28), pressDirection.Perpendicular() * 6f, pressDirection.Angle());
+                        }
+                    }
+                }
             }
         }
 
@@ -187,7 +218,7 @@ namespace Celeste.Mod.Batteries
 
         public void Hit(Battery battery, Vector2 direction)
         {
-            if (!pressed && direction == pressDirection && battery.Charge > 0)
+            if (!pressed && direction == pressDirection && battery.Charge > 0 && (battery.onlyFits < 0 || battery.onlyFits == id.ID))
             {
                 battery.Use();
                 battery.RemoveSelf();

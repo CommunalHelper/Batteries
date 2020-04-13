@@ -1,21 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Battery.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="BatteriesModule.cs" Line="32" Column="10" />
-      <File FileName="RechargePlatform.cs" Line="37" Column="80" />
-      <File FileName="BatterySwitch.cs" Line="259" Column="39" />
-      <File FileName="Battery.cs" Line="167" Column="40" />
-      <File FileName="PowerRefill.cs" Line="149" Column="10" />
-      <File FileName="BatteryCollider.cs" Line="7" Column="21" />
-      <File FileName="BatteryGate.cs" Line="22" Column="46" />
-      <File FileName="../../../../../../../../../Everest/Celeste.Mod.mm/Patches/KeyboardConfigUI.cs" Line="114" Column="13" />
+      <File FileName="BatterySwitch.cs" Line="146" Column="14" />
+      <File FileName="Battery.cs" Line="28" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Batteries" expanded="True">
             <Node name="Batteries" expanded="True">
-              <Node name="References" expanded="True" />
               <Node name="Battery.cs" selected="True" />
             </Node>
           </Node>

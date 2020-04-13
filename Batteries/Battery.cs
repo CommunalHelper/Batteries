@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 namespace Celeste.Mod.Batteries
 {
 
+    [Tracked]
     [CustomEntity("batteries/battery")]
     public class Battery : Actor
     {
@@ -66,13 +67,17 @@ namespace Celeste.Mod.Batteries
 
         private bool fresh;
 
+        private bool ignoreBarriers;
+
+        public int onlyFits;
+
         private EntityID id;
 
         private int spinnerHits = 0;
 
         private string FlagName => GetFlagName(id);
 
-        public Battery(Vector2 position, int initalCharge, int maxCharge, int dischargeRate, bool oneUse, EntityID id)
+        public Battery(Vector2 position, int initalCharge, int maxCharge, int dischargeRate, bool oneUse, bool ignoreBarriers, int onlyFits, EntityID id)
             : base(position)
         {
             previousPosition = position;
@@ -104,11 +109,16 @@ namespace Celeste.Mod.Batteries
             Charge = initalCharge;
             this.DischargeRate = dischargeRate;
             this.oneUse = oneUse;
+            this.ignoreBarriers = ignoreBarriers;
+            this.onlyFits = onlyFits;
             LoadParticles();
         }
 
         public Battery(EntityData e, Vector2 offset, EntityID id)
-            : this(e.Position + offset, e.Int("initalCharge", 500), e.Int("maxCharge", 500), e.Int("dischargeRate", 80), e.Bool("oneUse"), id)
+            : this(e.Position + offset, e.Int("initalCharge", 500), 
+                   e.Int("maxCharge", 500), e.Int("dischargeRate", 80),
+                   e.Bool("oneUse"), e.Bool("ignoreBarriers", false), 
+                   e.Int("onlyFits", -1), id)
         {
         }
 
@@ -362,15 +372,18 @@ namespace Celeste.Mod.Batteries
                     batteryCollider.Check(this);
                 }
                 Hold.CheckAgainstColliders();
-                foreach (SeekerBarrier entity in base.Scene.Tracker.GetEntities<SeekerBarrier>())
+                if (!ignoreBarriers)
                 {
-                    entity.Collidable = true;
-                    bool flag = CollideCheck(entity);
-                    entity.Collidable = false;
-                    if (flag)
+                    foreach (SeekerBarrier entity in base.Scene.Tracker.GetEntities<SeekerBarrier>())
                     {
-                        entity.OnReflectSeeker();
-                        Die();
+                        entity.Collidable = true;
+                        bool flag = CollideCheck(entity);
+                        entity.Collidable = false;
+                        if (flag)
+                        {
+                            entity.OnReflectSeeker();
+                            Die();
+                        }
                     }
                 }
             }
