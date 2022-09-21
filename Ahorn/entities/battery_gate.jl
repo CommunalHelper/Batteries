@@ -5,21 +5,21 @@ using ..Ahorn, Maple
 @mapdef Entity "batteries/battery_gate" BatteryGate(x::Integer, y::Integer, vertical::Bool=true, closes::Bool=false, height::Integer=48, switchId::Integer=-1)
 
 const placements = Ahorn.PlacementDict(
-    "Battery Gate (Vertical)" => Ahorn.EntityPlacement(
+    "Battery Gate (Vertical) (Batteries)" => Ahorn.EntityPlacement(
         BatteryGate,
         "point",
         Dict{String, Any}(
             "vertical" => true,
         )
     ),
-    "Battery Gate (Horizontal)" => Ahorn.EntityPlacement(
+    "Battery Gate (Horizontal) (Batteries)" => Ahorn.EntityPlacement(
         BatteryGate,
         "point",
         Dict{String, Any}(
             "vertical" => false,
         )
     ),
-    "Closing Battery Gate (Vertical)" => Ahorn.EntityPlacement(
+    "Closing Battery Gate (Vertical) (Batteries)" => Ahorn.EntityPlacement(
         BatteryGate,
         "point",
         Dict{String, Any}(
@@ -27,7 +27,7 @@ const placements = Ahorn.PlacementDict(
             "closes" => true,
         )
     ),
-    "Closing Battery Gate (Horizontal)" => Ahorn.EntityPlacement(
+    "Closing Battery Gate (Horizontal) (Batteries)" => Ahorn.EntityPlacement(
         BatteryGate,
         "point",
         Dict{String, Any}(

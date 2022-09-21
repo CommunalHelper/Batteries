@@ -52,7 +52,7 @@ namespace Celeste.Mod.Batteries {
         }
 
         public BatteryGate(EntityData data, Vector2 offset, EntityID id)
-            : this(data.Position + offset, data.Height, data.Bool("vertical"), data.Int("switchId", -1), data.Bool("closes", false), id) {
+            : this(data.Position + offset, data.Height != 0 ? data.Height : 48, data.Bool("vertical"), data.Int("switchId", -1), data.Bool("closes", false), id) {
         }
 
         public override void Awake(Scene scene) {

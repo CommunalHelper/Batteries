@@ -2,7 +2,7 @@ module BatteriesBatterySwitch
 
 using ..Ahorn, Maple
 
-@mapdef Entity "batteries/battery_switch" BatterySwitch(x::Integer, y::Integer, rightSide::Bool=false, persistent::Bool=false, horizontal::Bool=true, alwaysFlag::Bool=false)
+@mapdef Entity "batteries/battery_switch" BatterySwitch(x::Integer, y::Integer, rightSide::Bool=false, ceiling::Bool=false, persistent::Bool=false, horizontal::Bool=true, alwaysFlag::Bool=false)
 
 const placements = Ahorn.PlacementDict()
 
@@ -14,7 +14,7 @@ directions = Dict{String, Tuple{Bool, String, Bool}}(
 )
 
 for (dir, data) in directions
-    key = "Battery Switch ($(uppercasefirst(dir)))"
+    key = "Battery Switch ($(uppercasefirst(dir))) (Batteries)"
     horiz, datakey, val = data
     placements[key] = Ahorn.EntityPlacement(
         BatterySwitch,

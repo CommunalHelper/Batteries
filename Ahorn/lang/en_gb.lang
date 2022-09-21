@@ -1,22 +1,22 @@
 # Battery Switch
-placements.entities.batteries/battery_switch.tooltips.horizontal=Whether the switch is horizontally aligned, or whether it is vertical
-placements.entities.batteries/battery_switch.tooltips.alwaysFlag=If this is enabled, the switch will always set the flag \"batterySwitch_(id)\" when activated
-placements.entities.batteries/battery_switch.tooltips.rightSide=This is enabled if the switch is attached to the right side of the block, versus being on the left
-placements.entities.batteries/battery_switch.tooltips.persistent=If this is enabled, the switch will stay activated when the room is reset
-placements.entities.batteries/battery_switch.tooltips.ceiling=This is enabled if the switch is attached to the bottom of a block, versus being on the top
+placements.entities.batteries/battery_switch.tooltips.horizontal=Whether the switch is horizontally aligned. Vertical if not ticked.
+placements.entities.batteries/battery_switch.tooltips.alwaysFlag=If this is enabled, the switch will always set the flag \"batterySwitch_(id)\" when activated. Otherwise, it will only set the flag if persistent.
+placements.entities.batteries/battery_switch.tooltips.rightSide=Whether the switch should be attached to the right side of the block as opposed to the left. Has no effect on vertical switches.
+placements.entities.batteries/battery_switch.tooltips.persistent=If this is enabled, the switch will stay activated when the room is reset.
+placements.entities.batteries/battery_switch.tooltips.ceiling=Whether the switch should be attached to the bottom side of the block as opposed to the top. Has no effect on horizontal switches.
 
 # Battery
 
-placements.entities.batteries/battery.tooltips.oneUse=If this is enabled, the battery will not respawn after it is used to activate a switch
+placements.entities.batteries/battery.tooltips.oneUse=If this is enabled, the battery will not respawn after it is used to activate a switch.
 placements.entities.batteries/battery.tooltips.onlyFits=The entity id of the switch that this battery fits into. If unset or below 0, this battery will be able to fit into any switch.
-placements.entities.batteries/battery.tooltips.ignoreBarriers=If this is enabled, this battery will be able to pass through seeker barriers without being destroyed
-placements.entities.batteries/battery.tooltips.maxCharge=The maximum charge that the battery can hold
-placements.entities.batteries/battery.tooltips.initalCharge=The charge that the battery starts with
-placements.entities.batteries/battery.tooltips.dischargeRate=The rate at which the battery loses charge (in units/second)
+placements.entities.batteries/battery.tooltips.ignoreBarriers=If this is enabled, this battery will be able to pass through seeker barriers without being destroyed.
+placements.entities.batteries/battery.tooltips.maxCharge=The maximum charge that the battery can hold.
+placements.entities.batteries/battery.tooltips.initalCharge=The charge that the battery starts with.
+placements.entities.batteries/battery.tooltips.dischargeRate=The rate at which the battery loses charge (in units/second).
 
 # Battery Power Refill
 
-placements.entities.batteries/power_refill.tooltips.oneUse=If this is enabled, the refill will not respond after being used
+placements.entities.batteries/power_refill.tooltips.oneUse=If this is enabled, the refill will not respond after being used.
 
 # Battery Gate
 placements.entities.batteries/battery_gate.tooltips.closes=If this is enabled, the gate will start open and will close when activated
