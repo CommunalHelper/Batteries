@@ -21,7 +21,7 @@ battery.placements = {
             maxCharge = 500,
             initalCharge = 500,
             dischargeRate = 0,
-            oneUse = true,
+            oneUse = false,
             onlyFits = -1,
             ignoreBarriers = false
         }

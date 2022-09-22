@@ -13,9 +13,7 @@ const placements = Ahorn.PlacementDict(
         Battery,
         "point",
         Dict{String, Any}(
-            "initalCharge" => 500,
             "dischargeRate" => 0,
-            "oneUse" => true,
         )
     )
 )
