@@ -28,6 +28,12 @@ battery.placements = {
     }
 }
 
+battery.fieldInformation = {
+    onlyFits = {
+        fieldType = "integer"
+    }
+}
+
 battery.texture = "batteries/battery/full0"
 battery.justification = {0.5, 1}
 

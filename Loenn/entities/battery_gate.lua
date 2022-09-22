@@ -45,6 +45,12 @@ battery_gate.placements = {
     },
 }
 
+battery_gate.fieldInformation = {
+    switchId = {
+        fieldType = "integer"
+    }
+}
+
 battery_gate.canResize = {false, false}
 battery_gate.ignoredFields = {"_name", "_id", "height"} --height is a broken mess
 
