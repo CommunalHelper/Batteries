@@ -5,28 +5,48 @@ local battery_switch = {}
 
 battery_switch.name = "batteries/battery_switch"
 
-local directions = {
-    up = {false, "ceiling", false},
-    down = {false, "ceiling", true},
-    left = {true, "rightSide", false},
-    right = {true, "rightSide", true},
-}
-
-battery_switch.placements = {}
-for dir, data in pairs(directions) do
-    local horiz, datakey, val = unpack(data)
-    table.insert(battery_switch.placements, {
-        name = dir,
+battery_switch.placements = {
+    {
+        name = "up",
         data = {
             persistent = false,
             alwaysFlag = false,
             ceiling = false,
             rightSide = false,
-            horizontal = horiz,
-            [datakey] = val --will override ceiling or rightSide
+            horizontal = false,
         }
-    })
-end
+    },
+    {
+        name = "down",
+        data = {
+            persistent = false,
+            alwaysFlag = false,
+            ceiling = true,
+            rightSide = false,
+            horizontal = false,
+        }
+    },
+    {
+        name = "left",
+        data = {
+            persistent = false,
+            alwaysFlag = false,
+            ceiling = false,
+            rightSide = false,
+            horizontal = true,
+        }
+    },
+    {
+        name = "right",
+        data = {
+            persistent = false,
+            alwaysFlag = false,
+            ceiling = false,
+            rightSide = true,
+            horizontal = true,
+        }
+    },
+}
 
 battery_switch.fieldOrder = {"x", "y", "horizontal", "rightSide", "ceiling", "persistent", "alwaysFlag"}
 
