@@ -25,16 +25,16 @@ entities.batteries/battery.attributes.description.dischargeRate=The rate at whic
 # Battery Power Refill
 
 entities.batteries/power_refill.placements.name.default=Power Refill
-entities.batteries/power_refill.attributes.description.oneUse=If this is enabled, the refill will not respond after being used.
+entities.batteries/power_refill.attributes.description.oneUse=If this is enabled, the refill will not respawn after being used.
 
 # Battery Gate
 entities.batteries/battery_gate.placements.name.vertical=Battery Gate (Vertical)
 entities.batteries/battery_gate.placements.name.vertical_closing=Closing Battery Gate (Vertical)
 entities.batteries/battery_gate.placements.name.horizontal=Battery Gate (Horizontal)
 entities.batteries/battery_gate.placements.name.horizontal_closing=Closing Battery Gate (Horizontal)
-entities.batteries/battery_gate.attributes.description.closes=If this is enabled, the gate will start open and will close when activated
-entities.batteries/battery_gate.attributes.description.vertical=Whether the gate is vertically aligned, or whether it is horizontal
-entities.batteries/battery_gate.attributes.description.switchId=The entity id of the switch that opens the gate. If unset or below 0, the nearest unpaired switch will open this gate
+entities.batteries/battery_gate.attributes.description.closes=If this is enabled, the gate will start open and will close when activated.
+entities.batteries/battery_gate.attributes.description.vertical=Whether the gate is vertically aligned, or whether it is horizontal.
+entities.batteries/battery_gate.attributes.description.switchId=The entity id of the switch that opens the gate. If unset or below 0, the nearest unpaired switch will open this gate.
 
 # Battery Recharge Platform
 entities.batteries/recharge_platform.placements.name.default=Battery Recharge Platform

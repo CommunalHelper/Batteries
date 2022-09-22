@@ -11,14 +11,15 @@ placements.entities.batteries/battery.tooltips.oneUse=If this is enabled, the ba
 placements.entities.batteries/battery.tooltips.onlyFits=The entity id of the switch that this battery fits into. If unset or below 0, this battery will be able to fit into any switch.
 placements.entities.batteries/battery.tooltips.ignoreBarriers=If this is enabled, this battery will be able to pass through seeker barriers without being destroyed.
 placements.entities.batteries/battery.tooltips.maxCharge=The maximum charge that the battery can hold.
+placements.entities.batteries/battery.names.initalCharge=Initial Charge
 placements.entities.batteries/battery.tooltips.initalCharge=The charge that the battery starts with.
 placements.entities.batteries/battery.tooltips.dischargeRate=The rate at which the battery loses charge (in units/second).
 
 # Battery Power Refill
 
-placements.entities.batteries/power_refill.tooltips.oneUse=If this is enabled, the refill will not respond after being used.
+placements.entities.batteries/power_refill.tooltips.oneUse=If this is enabled, the refill will not respawn after being used.
 
 # Battery Gate
-placements.entities.batteries/battery_gate.tooltips.closes=If this is enabled, the gate will start open and will close when activated
-placements.entities.batteries/battery_gate.tooltips.vertical=Whether the gate is vertically aligned, or whether it is horizontal
-placements.entities.batteries/battery_gate.tooltips.switchId=The entity id of the switch that opens the gate. If unset or below 0, the nearest unpaired switch will open this gate
+placements.entities.batteries/battery_gate.tooltips.closes=If this is enabled, the gate will start open and will close when activated.
+placements.entities.batteries/battery_gate.tooltips.vertical=Whether the gate is vertically aligned, or whether it is horizontal.
+placements.entities.batteries/battery_gate.tooltips.switchId=The entity id of the switch that opens the gate. If unset or below 0, the nearest unpaired switch will open this gate.
