@@ -2,7 +2,7 @@ module BatteriesBatteryGate
 
 using ..Ahorn, Maple
 
-@mapdef Entity "batteries/battery_gate" BatteryGate(x::Integer, y::Integer, vertical::Bool=true, closes::Bool=false, height::Integer=48, switchId::Integer=-1)
+@mapdef Entity "batteries/battery_gate" BatteryGate(x::Integer, y::Integer, vertical::Bool=true, closes::Bool=false, switchId::Integer=-1)
 
 const placements = Ahorn.PlacementDict(
     "Battery Gate (Vertical) (Batteries)" => Ahorn.EntityPlacement(
@@ -39,7 +39,7 @@ const placements = Ahorn.PlacementDict(
 
 function Ahorn.selection(entity::BatteryGate)
     x, y = Ahorn.position(entity)
-    height = Int(get(entity.data, "height", 8))
+    height = Int(get(entity.data, "height", 48))
 
     if get(entity.data, "vertical", true)
         return Ahorn.Rectangle(x, y, 15, height)

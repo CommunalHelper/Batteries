@@ -10,7 +10,6 @@ battery_gate.placements = {
     {
         name = "vertical",
         data = {
-            --height = 48,
             switchId = -1,
             vertical = true,
             closes = false
@@ -19,7 +18,6 @@ battery_gate.placements = {
     {
         name = "vertical_closing",
         data = {
-            --height = 48,
             switchId = -1,
             vertical = true,
             closes = true
@@ -28,7 +26,6 @@ battery_gate.placements = {
     {
         name = "horizontal",
         data = {
-            --height = 48,
             switchId = -1,
             vertical = false,
             closes = false
@@ -37,7 +34,6 @@ battery_gate.placements = {
     {
         name = "horizontal_closing",
         data = {
-            --height = 48,
             switchId = -1,
             vertical = false,
             closes = true
@@ -51,8 +47,7 @@ battery_gate.fieldInformation = {
     }
 }
 
-battery_gate.canResize = {false, false}
-battery_gate.ignoredFields = {"_name", "_id", "height"} --height is a broken mess
+battery_gate.canResize = {false, false} -- prevent resizing gates placed with old Ahorn plugin
 
 function battery_gate.sprite(room, entity)
     local texture = (entity.closes ? "batteries/battery_gate/door15" : "batteries/battery_gate/door1")

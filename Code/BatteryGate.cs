@@ -22,8 +22,8 @@ namespace Celeste.Mod.Batteries {
         private float drawHeight;
         private float drawHeightMoveSpeed;
 
-        public BatteryGate(Vector2 position, int size, bool vertical, int? openWith, bool closes, EntityID id)
-            : base(position, vertical ? 15f : size, vertical ? size : 15f, safe: true) {
+        public BatteryGate(Vector2 position, bool vertical, int? openWith, bool closes, EntityID id)
+            : base(position, vertical ? 15f : 48f, vertical ? 48f : 15f, safe: true) {
             this.vertical = vertical;
             this.closes = closes;
             bound = openWith is not (null or < 0);
@@ -31,7 +31,7 @@ namespace Celeste.Mod.Batteries {
                 this.openWith = (int)openWith;
             }
 
-            closedSize = size;
+            closedSize = 48;
             entityID = id;
             Add(sprite = BatteriesModule.SpriteBank.Create("battery_gate"));
 
@@ -52,7 +52,7 @@ namespace Celeste.Mod.Batteries {
         }
 
         public BatteryGate(EntityData data, Vector2 offset, EntityID id)
-            : this(data.Position + offset, data.Height != 0 ? data.Height : 48, data.Bool("vertical"), data.Int("switchId", -1), data.Bool("closes", false), id) {
+            : this(data.Position + offset, data.Bool("vertical"), data.Int("switchId", -1), data.Bool("closes", false), id) {
         }
 
         public override void Awake(Scene scene) {
