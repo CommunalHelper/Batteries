@@ -47,16 +47,19 @@ battery_gate.fieldInformation = {
     }
 }
 
+battery_gate.fieldOrder = {"x", "y", "switchId", "vertical", "closes"}
+
 battery_gate.canResize = {false, false} -- prevent resizing gates placed with old Ahorn plugin
 
 function battery_gate.sprite(room, entity)
     local texture = (entity.closes ? "batteries/battery_gate/door15" : "batteries/battery_gate/door1")
     local sprite = drawableSprite.fromTexture(texture, entity)
+    sprite:setJustification(0.5, 0)
 
     if entity.vertical then
-        sprite:addPosition(7, 24)
+        sprite:addPosition(7, 0)
     else
-        sprite:addPosition(24, 8)
+        sprite:addPosition(0, 8)
         sprite.rotation = -math.pi / 2
     end
 

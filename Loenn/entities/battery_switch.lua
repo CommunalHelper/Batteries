@@ -53,20 +53,21 @@ battery_switch.fieldOrder = {"x", "y", "horizontal", "rightSide", "ceiling", "pe
 function battery_switch.sprite(room, entity)
     local texture = "batteries/battery_switch/insert8"
     local sprite = drawableSprite.fromTexture(texture, entity)
+    sprite:setJustification(0.5, 1)
 
     if entity.horizontal then
         if entity.rightSide then
-            sprite:addPosition(10, 8)
-            sprite.rotation = math.pi
+            sprite:addPosition(10, 18)
+            sprite:setScale(-1, 1)
         else
-            sprite:addPosition(-2, 8)
+            sprite:addPosition(-2, 18)
         end
     else
         if entity.ceiling then
-            sprite:addPosition(8, 10)
+            sprite:addPosition(18, 10)
             sprite.rotation = -math.pi / 2
         else
-            sprite:addPosition(8, -2)
+            sprite:addPosition(-2, -2)
             sprite.rotation = math.pi / 2
         end
     end
