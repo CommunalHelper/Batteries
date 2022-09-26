@@ -5,7 +5,7 @@ using ..Ahorn, Maple
 @mapdef Entity "batteries/recharge_platform" BatteryRechargePlatform(x::Integer, y::Integer)
 
 const placements = Ahorn.PlacementDict(
-    "Battery Recharge Platform" => Ahorn.EntityPlacement(
+    "Battery Recharge Platform (Batteries)" => Ahorn.EntityPlacement(
         BatteryRechargePlatform
     )
 )

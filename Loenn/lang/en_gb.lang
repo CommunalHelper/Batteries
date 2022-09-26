@@ -1,0 +1,40 @@
+mods.batteries.name=Batteries
+# Battery Switch
+entities.batteries/battery_switch.placements.name.up=Battery Switch (Up)
+entities.batteries/battery_switch.placements.name.down=Battery Switch (Down)
+entities.batteries/battery_switch.placements.name.left=Battery Switch (Left)
+entities.batteries/battery_switch.placements.name.right=Battery Switch (Right)
+entities.batteries/battery_switch.attributes.description.horizontal=Whether the switch is horizontally aligned. Vertical if not ticked.
+entities.batteries/battery_switch.attributes.description.alwaysFlag=If this is enabled, the switch will always set the flag "batterySwitch_(id)" when activated. Otherwise, it will only set the flag if persistent.
+entities.batteries/battery_switch.attributes.description.rightSide=Whether the switch should be attached to the right side of the block as opposed to the left. Has no effect on vertical switches.
+entities.batteries/battery_switch.attributes.description.persistent=If this is enabled, the switch will stay activated when the room is reset.
+entities.batteries/battery_switch.attributes.description.ceiling=Whether the switch should be attached to the bottom side of the block as opposed to the top. Has no effect on horizontal switches.
+
+# Battery
+
+entities.batteries/battery.placements.name.default=Battery
+entities.batteries/battery.placements.name.permanent=Battery (Permanent)
+entities.batteries/battery.attributes.name.initalCharge=Initial Charge
+entities.batteries/battery.attributes.description.oneUse=If this is enabled, the battery will not respawn after it is used to activate a switch.
+entities.batteries/battery.attributes.description.onlyFits=The entity id of the switch that this battery fits into. If unset or below 0, this battery will be able to fit into any switch.
+entities.batteries/battery.attributes.description.ignoreBarriers=If this is enabled, this battery will be able to pass through seeker barriers without being destroyed.
+entities.batteries/battery.attributes.description.maxCharge=The maximum charge that the battery can hold.
+entities.batteries/battery.attributes.description.initalCharge=The charge that the battery starts with.
+entities.batteries/battery.attributes.description.dischargeRate=The rate at which the battery loses charge (in units/second).
+
+# Battery Power Refill
+
+entities.batteries/power_refill.placements.name.default=Power Refill
+entities.batteries/power_refill.attributes.description.oneUse=If this is enabled, the refill will not respawn after being used.
+
+# Battery Gate
+entities.batteries/battery_gate.placements.name.vertical=Battery Gate (Vertical)
+entities.batteries/battery_gate.placements.name.vertical_closing=Closing Battery Gate (Vertical)
+entities.batteries/battery_gate.placements.name.horizontal=Battery Gate (Horizontal)
+entities.batteries/battery_gate.placements.name.horizontal_closing=Closing Battery Gate (Horizontal)
+entities.batteries/battery_gate.attributes.description.closes=If this is enabled, the gate will start open and will close when activated.
+entities.batteries/battery_gate.attributes.description.vertical=Whether the gate is vertically aligned, or whether it is horizontal.
+entities.batteries/battery_gate.attributes.description.switchId=The entity id of the switch that opens the gate. If unset or below 0, the nearest unpaired switch will open this gate.
+
+# Battery Recharge Platform
+entities.batteries/recharge_platform.placements.name.default=Battery Recharge Platform

@@ -5,17 +5,15 @@ using ..Ahorn, Maple
 @mapdef Entity "batteries/battery" Battery(x::Integer, y::Integer, maxCharge::Integer=500, initalCharge::Integer=500, dischargeRate::Integer=80, oneUse::Bool=false, onlyFits::Integer=-1, ignoreBarriers::Bool=false)
 
 const placements = Ahorn.PlacementDict(
-    "Battery" => Ahorn.EntityPlacement(
+    "Battery (Batteries)" => Ahorn.EntityPlacement(
         Battery,
         "point"
     ),
-    "Battery (Permanent)" => Ahorn.EntityPlacement(
+    "Battery (Permanent) (Batteries)" => Ahorn.EntityPlacement(
         Battery,
         "point",
         Dict{String, Any}(
-            "initalCharge" => 500,
             "dischargeRate" => 0,
-            "oneUse" => true,
         )
     )
 )
