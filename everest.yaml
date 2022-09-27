@@ -1,5 +1,5 @@
 ﻿- Name: Batteries
-  Version: 1.1.0
+  Version: 1.1.1
   DLL: Code/bin/Batteries.dll
   Dependencies:
     - Name: Everest
