@@ -485,11 +485,9 @@ namespace Celeste.Mod.Batteries {
             spinnerHits = 0;
             Speed = Vector2.Zero;
             AddTag(Tags.Persistent);
-            SceneAs<Level>().Session.SetFlag(FlagName);
         }
 
         private void OnRelease(Vector2 force) {
-            SceneAs<Level>().Session.SetFlag(FlagName, false);
             RemoveTag(Tags.Persistent);
             if (force.X != 0f && force.Y == 0f) {
                 force.Y = -0.4f;
