@@ -119,7 +119,7 @@ namespace Celeste.Mod.Batteries {
         public override void Removed(Scene scene) {
             base.Removed(scene);
             if (!persistent && alwaysFlag) {
-                SceneAs<Level>().Session.SetFlag(FlagName, false);
+                (scene as Level).Session.SetFlag(FlagName, false);
             }
         }
 
