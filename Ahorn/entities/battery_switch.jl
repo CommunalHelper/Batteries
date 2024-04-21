@@ -2,7 +2,7 @@ module BatteriesBatterySwitch
 
 using ..Ahorn, Maple
 
-@mapdef Entity "batteries/battery_switch" BatterySwitch(x::Integer, y::Integer, rightSide::Bool=false, ceiling::Bool=false, persistent::Bool=false, horizontal::Bool=true, alwaysFlag::Bool=false)
+@mapdef Entity "batteries/battery_switch" BatterySwitch(x::Integer, y::Integer, rightSide::Bool=false, ceiling::Bool=false, persistent::Bool=false, horizontal::Bool=true, alwaysFlag::Bool=false, particleColorA::String="00ff00", particleColorB::String="ffffff", glowColor::String="00ffff")
 
 const placements = Ahorn.PlacementDict()
 

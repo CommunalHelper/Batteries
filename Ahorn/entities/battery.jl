@@ -2,7 +2,7 @@ module BatteriesBattery
 
 using ..Ahorn, Maple
 
-@mapdef Entity "batteries/battery" Battery(x::Integer, y::Integer, maxCharge::Integer=500, initalCharge::Integer=500, dischargeRate::Integer=80, oneUse::Bool=false, onlyFits::Integer=-1, ignoreBarriers::Bool=false)
+@mapdef Entity "batteries/battery" Battery(x::Integer, y::Integer, maxCharge::Integer=500, initalCharge::Integer=500, dischargeRate::Integer=80, oneUse::Bool=false, onlyFits::Integer=-1, ignoreBarriers::Bool=false, particleColorInfinite::String="00ffff", particleColorFull::String="00ff00", particleColorHalf::String="fafad2", particleColorLow::String="ff4500")
 
 const placements = Ahorn.PlacementDict(
     "Battery (Batteries)" => Ahorn.EntityPlacement(

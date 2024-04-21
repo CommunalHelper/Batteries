@@ -8,9 +8,8 @@ namespace Celeste.Mod.Batteries {
 
     [CustomEntity("batteries/battery_switch")]
     public class BatterySwitch : Solid {
-        public static ParticleType P_Signal = new(DashSwitch.P_PressAMirror);
-
-        private static bool particlesSetup = false;
+        private static ParticleType P_Signal_A = new(DashSwitch.P_PressA);
+        private static ParticleType P_Signal_B = new(DashSwitch.P_PressA);
 
         private readonly Sides side;
         private readonly bool persistent;
@@ -19,20 +18,19 @@ namespace Celeste.Mod.Batteries {
         private readonly bool alwaysFlag;
         private bool pressed;
         private Vector2 pressDirection;
+        private Color glowColor;
         private EntityID id;
 
-        public BatterySwitch(Vector2 position, Sides side, bool persistent, bool allGates, bool alwaysFlag, EntityID id)
+        public BatterySwitch(Vector2 position, Sides side, bool persistent, bool allGates, bool alwaysFlag, Color glowColor, EntityID id)
             : base(position, 0f, 0f, safe: true) {
-            if (!particlesSetup) {
-                SetupParticles();
-                particlesSetup = true;
-            }
 
             this.side = side;
             this.persistent = persistent;
             this.allGates = allGates;
             this.id = id;
             this.alwaysFlag = alwaysFlag;
+            this.glowColor = glowColor;
+
             Add(sprite = BatteriesModule.SpriteBank.Create("battery_switch"));
             if (side is Sides.Up or Sides.Down) {
                 Collider.Width = 16f;
@@ -67,7 +65,10 @@ namespace Celeste.Mod.Batteries {
         }
 
         public BatterySwitch(EntityData data, Vector2 offset, EntityID id)
-            : this(data.Position + offset, direction(data), data.Bool("persistent"), data.Bool("allGates"), data.Bool("alwaysFlag"), id) { }
+            : this(data.Position + offset, direction(data), data.Bool("persistent"), data.Bool("allGates"), 
+                  data.Bool("alwaysFlag"), data.HexColor("glowColor", Color.Aqua), id) {
+            SetupParticles(data);
+        }
 
         public enum Sides {
             Up,
@@ -104,12 +105,12 @@ namespace Celeste.Mod.Batteries {
             Level level = SceneAs<Level>();
             if (Scene.OnInterval(0.3f)) {
                 if (pressed) {
-                    level.ParticlesFG.Emit(DashSwitch.P_PressA, 1, Collider.AbsolutePosition + Collider.Center, pressDirection.Perpendicular() * 6f, (pressDirection * -1).Angle());
+                    level.ParticlesFG.Emit(P_Signal_A, 1, Collider.AbsolutePosition + Collider.Center, pressDirection.Perpendicular() * 6f, (pressDirection * -1).Angle());
                 } else {
                     Player player = level.Tracker.GetEntity<Player>();
                     if (player?.Holding?.Entity is Battery battery) {
                         if (battery.onlyFits == id.ID) {
-                            level.ParticlesFG.Emit(P_Signal, 8, Collider.AbsolutePosition + Collider.Center + (pressDirection * -28), pressDirection.Perpendicular() * 6f, pressDirection.Angle());
+                            level.ParticlesFG.Emit(P_Signal_A, 8, Collider.AbsolutePosition + Collider.Center + (pressDirection * -28), pressDirection.Perpendicular() * 6f, pressDirection.Angle());
                         }
                     }
                 }
@@ -137,8 +138,8 @@ namespace Celeste.Mod.Batteries {
                     player.Position += -5 * pressDirection;
                 }
 
-                SceneAs<Level>().ParticlesFG.Emit(DashSwitch.P_PressA, 10, Collider.AbsolutePosition + Collider.Center, direction.Perpendicular() * 6f, (pressDirection * -1).Angle());
-                SceneAs<Level>().ParticlesFG.Emit(DashSwitch.P_PressB, 4, Collider.AbsolutePosition + Collider.Center, direction.Perpendicular() * 6f, (pressDirection * -1).Angle());
+                SceneAs<Level>().ParticlesFG.Emit(P_Signal_A, 10, Collider.AbsolutePosition + Collider.Center, direction.Perpendicular() * 6f, (pressDirection * -1).Angle());
+                SceneAs<Level>().ParticlesFG.Emit(P_Signal_B, 4, Collider.AbsolutePosition + Collider.Center, direction.Perpendicular() * 6f, (pressDirection * -1).Angle());
                 if (allGates) {
                     foreach (BatteryGate entity in Scene.Tracker.GetEntities<BatteryGate>()) {
                         if (entity.entityID.Level == id.Level) {
@@ -158,20 +159,25 @@ namespace Celeste.Mod.Batteries {
             }
         }
 
-        private static void SetupParticles() {
-            P_Signal.Color = Color.Aqua;
-            P_Signal.ColorMode = ParticleType.ColorModes.Choose;
-            P_Signal.LifeMax = 0.6f;
-            P_Signal.LifeMin = 0.3f;
-            P_Signal.SpeedMultiplier = 0.1f;
-            P_Signal.DirectionRange = (float)(Math.PI / 5);
+        private static void SetupParticles(EntityData e) {
+            P_Signal_A.Color = e.HexColor("particleColorA", Color.Lime);
+            P_Signal_A.ColorMode = ParticleType.ColorModes.Static;
+            P_Signal_A.LifeMax = 0.6f;
+            P_Signal_A.LifeMin = 0.3f;
+            P_Signal_A.SpeedMultiplier = 0.1f;
+            P_Signal_A.DirectionRange = (float)(Math.PI / 5);
+
+            P_Signal_B.Color = e.HexColor("particleColorB", Color.White);
+            P_Signal_B.ColorMode = ParticleType.ColorModes.Static;
+            P_Signal_B.LifeMax = 0.6f;
+            P_Signal_B.LifeMin = 0.3f;
+            P_Signal_B.SpeedMultiplier = 0.1f;
+            P_Signal_B.DirectionRange = (float)(Math.PI / 5);
         }
 
         private static Sides direction(EntityData data) {
             return data.Bool("horizontal") ? data.Bool("rightSide") ? Sides.Right : Sides.Left : data.Bool("ceiling") ? Sides.Down : Sides.Up;
         }
-
-
 
         private void LitState() {
             switch (side) {
@@ -203,7 +209,7 @@ namespace Celeste.Mod.Batteries {
                 _ => Vector2.Zero
             };
 
-            Add(new VertexLight(offset, Color.Lime, 1f, 12, 24));
+            Add(new VertexLight(offset, glowColor, 1f, 12, 24));
         }
 
         private List<BatteryGate> GetGate() {

@@ -74,7 +74,6 @@ namespace Celeste.Mod.Batteries {
             this.oneUse = oneUse;
             this.ignoreBarriers = ignoreBarriers;
             this.onlyFits = onlyFits;
-            LoadParticles();
         }
 
         public Battery(EntityData e, Vector2 offset, EntityID id)
@@ -82,20 +81,21 @@ namespace Celeste.Mod.Batteries {
                    e.Int("maxCharge", 500), e.Int("dischargeRate", 80),
                    e.Bool("oneUse"), e.Bool("ignoreBarriers", false),
                    e.Int("onlyFits", -1), id) {
+            LoadParticles(e);
         }
 
         private string FlagName => GetFlagName(id);
 
         public static string GetFlagName(EntityID id) => "battery_" + id.Key;
 
-        public static void LoadParticles() {
-            P_Infinite.Color = Color.Cyan;
+        private static void LoadParticles(EntityData e) {
+            P_Infinite.Color = e.HexColor("particleColorInfinite", Color.Cyan);
             P_Infinite.ColorMode = ParticleType.ColorModes.Static;
-            P_Full.Color = Color.Lime;
+            P_Full.Color = e.HexColor("particleColorFull", Color.Lime);
             P_Full.ColorMode = ParticleType.ColorModes.Static;
-            P_Half.Color = Color.LightGoldenrodYellow;
+            P_Half.Color = e.HexColor("particleColorHalf", Color.LightGoldenrodYellow);
             P_Half.ColorMode = ParticleType.ColorModes.Static;
-            P_Low.Color = Color.OrangeRed;
+            P_Low.Color = e.HexColor("particleColorLow", Color.OrangeRed);
             P_Low.ColorMode = ParticleType.ColorModes.Static;
         }
 

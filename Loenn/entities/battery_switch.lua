@@ -3,6 +3,10 @@ local utils = require("utils")
 
 local battery_switch = {}
 
+local COLOR_AQUA = "00ffff"
+local COLOR_LIME = "00ff00"
+local COLOR_WHITE = "ffffff"
+
 battery_switch.name = "batteries/battery_switch"
 
 battery_switch.placements = {
@@ -14,6 +18,9 @@ battery_switch.placements = {
             ceiling = false,
             rightSide = false,
             horizontal = false,
+            particleColorA = COLOR_AQUA,
+            particleColorB = COLOR_WHITE,
+            glowColor = COLOR_LIME
         }
     },
     {
@@ -24,6 +31,9 @@ battery_switch.placements = {
             ceiling = true,
             rightSide = false,
             horizontal = false,
+            particleColorA = COLOR_AQUA,
+            particleColorB = COLOR_WHITE,
+            glowColor = COLOR_LIME
         }
     },
     {
@@ -34,6 +44,9 @@ battery_switch.placements = {
             ceiling = false,
             rightSide = false,
             horizontal = true,
+            particleColorA = COLOR_LIME,
+            particleColorB = COLOR_WHITE,
+            glowColor = COLOR_AQUA
         }
     },
     {
@@ -44,11 +57,26 @@ battery_switch.placements = {
             ceiling = false,
             rightSide = true,
             horizontal = true,
+            particleColorA = COLOR_LIME,
+            particleColorB = COLOR_WHITE,
+            glowColor = COLOR_AQUA
         }
     },
 }
 
-battery_switch.fieldOrder = {"x", "y", "horizontal", "rightSide", "ceiling", "persistent", "alwaysFlag"}
+battery_switch.fieldOrder = {"x", "y", "particleColorA", "particleColorB", "glowColor", "horizontal", "rightSide", "ceiling", "persistent", "alwaysFlag"}
+
+battery_switch.fieldInformation = {
+    particleColorA = {
+        fieldType = "color"
+    },
+    particleColorB = {
+        fieldType = "color"
+    },
+    glowColor = {
+        fieldType = "color"
+    }
+}
 
 function battery_switch.sprite(room, entity)
     local texture = "batteries/battery_switch/insert8"
