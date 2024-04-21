@@ -37,11 +37,12 @@ namespace Celeste.Mod.Batteries {
         private float swatTimer;
         private float hardVerticalHitSoundCooldown = 0f;
         private ParticleType particle;
+        private Color deathEffectColor;
         private bool fresh;
         private EntityID id;
         private int spinnerHits = 0;
 
-        public Battery(Vector2 position, int initalCharge, int maxCharge, int dischargeRate, bool oneUse, bool ignoreBarriers, int onlyFits, EntityID id)
+        public Battery(Vector2 position, int initalCharge, int maxCharge, int dischargeRate, Color deathEffectColor, bool oneUse, bool ignoreBarriers, int onlyFits, EntityID id)
             : base(position) {
             previousPosition = position;
             this.id = id;
@@ -71,6 +72,7 @@ namespace Celeste.Mod.Batteries {
             MaxCharge = maxCharge;
             Charge = initalCharge;
             DischargeRate = dischargeRate;
+            this.deathEffectColor = deathEffectColor;
             this.oneUse = oneUse;
             this.ignoreBarriers = ignoreBarriers;
             this.onlyFits = onlyFits;
@@ -79,6 +81,7 @@ namespace Celeste.Mod.Batteries {
         public Battery(EntityData e, Vector2 offset, EntityID id)
             : this(e.Position + offset, e.Int("initalCharge", 500),
                    e.Int("maxCharge", 500), e.Int("dischargeRate", 80),
+                   e.HexColor("deathEffectColor", Color.ForestGreen),
                    e.Bool("oneUse"), e.Bool("ignoreBarriers", false),
                    e.Int("onlyFits", -1), id) {
             LoadParticles(e);
@@ -398,7 +401,7 @@ namespace Celeste.Mod.Batteries {
 
                 dead = true;
                 Audio.Play("event:/char/madeline/death", Position);
-                Add(new DeathEffect(Color.ForestGreen, Center - Position));
+                Add(new DeathEffect(deathEffectColor, Center - Position));
                 sprite.Visible = false;
                 Charge = 0;
                 Depth = -1000000;
