@@ -1,9 +1,12 @@
 mods.batteries.name=Batteries
+
 # Battery Switch
 entities.batteries/battery_switch.placements.name.up=Battery Switch (Up)
 entities.batteries/battery_switch.placements.name.down=Battery Switch (Down)
 entities.batteries/battery_switch.placements.name.left=Battery Switch (Left)
 entities.batteries/battery_switch.placements.name.right=Battery Switch (Right)
+entities.batteries/battery_switch.attributes.name.particleColorA=Particle Color 1
+entities.batteries/battery_switch.attributes.name.particleColorB=Particle Color 2
 entities.batteries/battery_switch.attributes.description.horizontal=Whether the switch is horizontally aligned. Vertical if not ticked.
 entities.batteries/battery_switch.attributes.description.alwaysFlag=If this is enabled, the switch will always set the flag "batterySwitch_(room name):(id)" when activated. Otherwise, it will only set the flag if persistent.
 entities.batteries/battery_switch.attributes.description.rightSide=Whether the switch should be attached to the right side of the block as opposed to the left. Has no effect on vertical switches.
@@ -11,19 +14,25 @@ entities.batteries/battery_switch.attributes.description.persistent=If this is e
 entities.batteries/battery_switch.attributes.description.ceiling=Whether the switch should be attached to the bottom side of the block as opposed to the top. Has no effect on horizontal switches.
 
 # Battery
-
 entities.batteries/battery.placements.name.default=Battery
 entities.batteries/battery.placements.name.permanent=Battery (Permanent)
 entities.batteries/battery.attributes.name.initalCharge=Initial Charge
+entities.batteries/battery.attributes.name.particleColorInfinite=Particle Color (Infinite Charge)
+entities.batteries/battery.attributes.name.particleColorFull=Particle Color (Full Charge)
+entities.batteries/battery.attributes.name.particleColorHalf=Particle Color (Half Charge)
+entities.batteries/battery.attributes.name.particleColorLow=Particle Color (Low Charge)
 entities.batteries/battery.attributes.description.oneUse=If this is enabled, the battery will not respawn after it is used to activate a switch.
 entities.batteries/battery.attributes.description.onlyFits=The entity id of the switch that this battery fits into. If unset or below 0, this battery will be able to fit into any switch.
 entities.batteries/battery.attributes.description.ignoreBarriers=If this is enabled, this battery will be able to pass through seeker barriers without being destroyed.
 entities.batteries/battery.attributes.description.maxCharge=The maximum charge that the battery can hold.
 entities.batteries/battery.attributes.description.initalCharge=The charge that the battery starts with.
 entities.batteries/battery.attributes.description.dischargeRate=The rate at which the battery loses charge (in units/second).
+entities.batteries/battery.attributes.description.particleColorInfinite=The particle color of the battery when it has infinite charge.
+entities.batteries/battery.attributes.description.particleColorFull=The particle color of the battery when it is at full charge.
+entities.batteries/battery.attributes.description.particleColorHalf=The particle color of the battery when it has half charge.
+entities.batteries/battery.attributes.description.particleColorLow=The particle color of the battery when it has low charge.
 
 # Battery Power Refill
-
 entities.batteries/power_refill.placements.name.default=Power Refill
 entities.batteries/power_refill.attributes.description.oneUse=If this is enabled, the refill will not respawn after being used.
 
