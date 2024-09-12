@@ -62,6 +62,7 @@ namespace Celeste.Mod.Batteries {
             Hold.OnHitSpring = HitSpring;
             Hold.OnHitSpinner = HitSpinner;
             Hold.SpeedGetter = () => Speed;
+            Hold.SpeedSetter = (speed) => Speed = speed;
             onCollideH = OnCollideH;
             onCollideV = OnCollideV;
             LiftSpeedGraceTime = 0.1f;
